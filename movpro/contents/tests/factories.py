@@ -35,20 +35,20 @@ class ContentFactory(factory.django.DjangoModelFactory):
     imdb_rating = factory.LazyAttribute(lambda x: Decimal(random.randrange(1, 10)))
     made_year = factory.LazyAttribute(lambda x: Decimal(random.randrange(1950, 2022)))
     director = factory.SubFactory(PersonFactory)
-    actors = factory.SubFactory(PersonFactory)
-    genres = factory.SubFactory(GenreFactory)
+    actress = factory.SubFactory(PersonFactory)
+    genre = factory.SubFactory(GenreFactory)
     content_rating = factory.SubFactory(ContentRatingFactory)
 
     @factory.post_generation
-    def genres(self, create, extracted, **kwargs):
+    def genre(self, create, extracted, **kwargs):
         if not create or not extracted:
-            self.genres.add(GenreFactory())
+            self.genre.add(GenreFactory())
             return
-        self.genres.add(*extracted)
+        self.genre.add(*extracted)
 
     @factory.post_generation
-    def actors(self, create, extracted, **kwargs):
+    def actress(self, create, extracted, **kwargs):
         if not create or not extracted:
-            self.actors.add(PersonFactory())
+            self.actress.add(PersonFactory())
             return
-        self.actors.add(*extracted)
+        self.actress.add(*extracted)
