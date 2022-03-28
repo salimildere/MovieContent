@@ -147,6 +147,7 @@ ROOT_URLCONF = "configs.urls"
 FIELD='django.db.models.AutoField'
 REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }
 
-SHELL_PLUS_PRE_IMPORTS = (
-    ("movpro.contents.tests.factories", "*"),
-)
+try:
+    from settings_local import *
+except ImportError:
+    pass
