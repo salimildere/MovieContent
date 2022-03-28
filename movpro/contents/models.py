@@ -76,7 +76,7 @@ class Content(StarterModel):
         Person, blank=True, related_name="actress"
     )
 
-    genres = models.ManyToManyField(Genre, blank=True)
+    genre = models.ManyToManyField(Genre, blank=True)
     content_rating = models.ForeignKey(ContentRating, on_delete=models.DO_NOTHING)
 
     def __str__(self):
