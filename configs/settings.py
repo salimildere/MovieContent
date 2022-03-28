@@ -145,7 +145,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 ALLOWED_HOSTS = ["*"]
 ROOT_URLCONF = "configs.urls"
 
-DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 FIELD = "django.db.models.AutoField"
 REST_FRAMEWORK = {"DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema"}
@@ -153,23 +153,21 @@ REST_FRAMEWORK = {"DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSc
 IS_ACTIVE_FACTORY = env("IS_ACTIVE_FACTORY", default=True)
 
 REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 100
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
+    "PAGE_SIZE": 100,
 }
 
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": "redis://redis:6379/1",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient"
-        },
-        "KEY_PREFIX": "example"
+        "OPTIONS": {"CLIENT_CLASS": "django_redis.client.DefaultClient"},
+        "KEY_PREFIX": "example",
     }
 }
 
 CACHE_TTL = 60 * 15
-REDIS_HOST = os.environ.get('REDIS_HOST', '0.0.0.0')
+REDIS_HOST = os.environ.get("REDIS_HOST", "0.0.0.0")
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "default"
 

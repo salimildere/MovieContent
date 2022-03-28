@@ -4,8 +4,8 @@ from django.urls import resolve, reverse
 
 class TestContentURLAPIViews(TestCase):
     """
-        run:
-        python manage.py test movpro.contents.tests.test_urls.TestContentURLAPIViews --keepdb
+    run:
+    python manage.py test movpro.contents.tests.test_urls.TestContentURLAPIViews --keepdb
 
     """
 
@@ -21,9 +21,7 @@ class TestContentURLAPIViews(TestCase):
             self.assertEqual(resolve(url).view_name, name)
 
     def test_content_urls_with_parameters(self):
-        url_name_map = (
-            ("/api/v1/content/", "contents:content-detail", "pk"),
-        )
+        url_name_map = (("/api/v1/content/", "contents:content-detail", "pk"),)
         for url, name, param in url_name_map:
             kwargs = {param: "123"}
             url = url + kwargs[param] + "/"
