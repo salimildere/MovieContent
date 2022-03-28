@@ -10,7 +10,7 @@ urlpatterns = [
     path("", ContentViewSet.as_view(), name="content"),
     path("<int:pk>/", ContentDetailViewSet.as_view(), name="content_detail"),
 ]
-if settings.IS_TEST_ENV:
+if settings.IS_ACTIVE_FACTORY:
     urlpatterns += [
         path(
             "create_mock/",

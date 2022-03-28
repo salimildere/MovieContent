@@ -145,12 +145,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 ALLOWED_HOSTS = ["*"]
 ROOT_URLCONF = "configs.urls"
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 FIELD = "django.db.models.AutoField"
 REST_FRAMEWORK = {"DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema"}
 
-IS_TEST_ENV = env("IS_TEST_ENV", default=False)
+IS_ACTIVE_FACTORY = env("IS_ACTIVE_FACTORY", default=True)
 
 try:
-    from settings_local import *
+    from configs.settings_local import *
 except ImportError:
     pass
