@@ -16,21 +16,6 @@ admin.site.register(ContentRating)
 #
 #     def has_change_permission(self, request, obj=None):
 #         return False
-#
-#
-# @admin.register(Person)
-# class PersonAdmin(CanNotCreateUpdateDelete):
-#     pass
-#
-#
-# @admin.register(Genre)
-# class GenreAdmin(CanNotCreateUpdateDelete):
-#     pass
-#
-#
-# @admin.register(ContentRating)
-# class ContentRatingAdmin(CanNotCreateUpdateDelete):
-#     pass
 
 
 @admin.register(Content)
