@@ -6,28 +6,28 @@ import factory
 
 class GenreFactory(factory.django.DjangoModelFactory):
     class Meta:
-        model = 'contents.Genre'
+        model = "contents.Genre"
 
     label = factory.Faker("word")
 
 
 class ContentRatingFactory(factory.django.DjangoModelFactory):
     class Meta:
-        model = 'contents.ContentRating'
+        model = "contents.ContentRating"
 
     label = factory.Faker("word")
 
 
 class PersonFactory(factory.django.DjangoModelFactory):
     class Meta:
-        model = 'contents.Person'
+        model = "contents.Person"
 
     full_name = factory.Faker("word")
 
 
 class ContentFactory(factory.django.DjangoModelFactory):
     class Meta:
-        model = 'contents.Content'
+        model = "contents.Content"
 
     description = factory.Faker("sentence")
     title = factory.Faker("word")

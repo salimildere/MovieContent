@@ -8,71 +8,173 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='ContentRating',
+            name="ContentRating",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created_at')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Updated_at')),
-                ('label', models.CharField(max_length=100)),
-                ('icon', models.ImageField(blank=True, null=True, upload_to='content_ratings/', verbose_name='image')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Created_at"),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="Updated_at"),
+                ),
+                ("label", models.CharField(max_length=100)),
+                (
+                    "icon",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to="content_ratings/",
+                        verbose_name="image",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Content Rating',
-                'verbose_name_plural': 'Content Ratings',
+                "verbose_name": "Content Rating",
+                "verbose_name_plural": "Content Ratings",
             },
         ),
         migrations.CreateModel(
-            name='Genre',
+            name="Genre",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created_at')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Updated_at')),
-                ('label', models.CharField(max_length=100)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Created_at"),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="Updated_at"),
+                ),
+                ("label", models.CharField(max_length=100)),
             ],
             options={
-                'verbose_name': 'Genres',
-                'verbose_name_plural': 'Genre',
+                "verbose_name": "Genres",
+                "verbose_name_plural": "Genre",
             },
         ),
         migrations.CreateModel(
-            name='Person',
+            name="Person",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created_at')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Updated_at')),
-                ('full_name', models.CharField(max_length=100)),
-                ('image', models.ImageField(blank=True, null=True, upload_to='peoples/', verbose_name='image')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Created_at"),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="Updated_at"),
+                ),
+                ("full_name", models.CharField(max_length=100)),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to="peoples/",
+                        verbose_name="image",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Persons',
-                'verbose_name_plural': 'Person',
+                "verbose_name": "Persons",
+                "verbose_name_plural": "Person",
             },
         ),
         migrations.CreateModel(
-            name='Content',
+            name="Content",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created_at')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Updated_at')),
-                ('description', models.TextField(blank=True, null=True)),
-                ('title', models.CharField(max_length=100)),
-                ('is_active', models.BooleanField(default=True)),
-                ('imdb_rating', models.DecimalField(blank=True, decimal_places=1, max_digits=3, null=True)),
-                ('made_year', models.PositiveIntegerField()),
-                ('image', models.ImageField(blank=True, null=True, upload_to='content/', verbose_name='image')),
-                ('actress', models.ManyToManyField(blank=True, related_name='actress', to='contents.Person')),
-                ('content_rating', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='contents.contentrating')),
-                ('director', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, related_name='director', to='contents.person')),
-                ('genres', models.ManyToManyField(blank=True, to='contents.Genre')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Created_at"),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="Updated_at"),
+                ),
+                ("description", models.TextField(blank=True, null=True)),
+                ("title", models.CharField(max_length=100)),
+                ("is_active", models.BooleanField(default=True)),
+                (
+                    "imdb_rating",
+                    models.DecimalField(
+                        blank=True, decimal_places=1, max_digits=3, null=True
+                    ),
+                ),
+                ("made_year", models.PositiveIntegerField()),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to="content/",
+                        verbose_name="image",
+                    ),
+                ),
+                (
+                    "actress",
+                    models.ManyToManyField(
+                        blank=True, related_name="actress", to="contents.Person"
+                    ),
+                ),
+                (
+                    "content_rating",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to="contents.contentrating",
+                    ),
+                ),
+                (
+                    "director",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        related_name="director",
+                        to="contents.person",
+                    ),
+                ),
+                ("genres", models.ManyToManyField(blank=True, to="contents.Genre")),
             ],
             options={
-                'verbose_name': 'Contents',
-                'verbose_name_plural': 'Content',
+                "verbose_name": "Contents",
+                "verbose_name_plural": "Content",
             },
         ),
     ]

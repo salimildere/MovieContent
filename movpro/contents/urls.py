@@ -1,6 +1,10 @@
 from django.conf import settings
 from django.urls import path
-from movpro.contents.views import ContentViewSet, ContentDetailViewSet, ContentCreateMockViewSet
+from movpro.contents.views import (
+    ContentViewSet,
+    ContentDetailViewSet,
+    ContentCreateMockViewSet,
+)
 
 urlpatterns = [
     path("", ContentViewSet.as_view(), name="content"),
@@ -8,5 +12,9 @@ urlpatterns = [
 ]
 if settings.IS_TEST_ENV:
     urlpatterns += [
-        path("create_mock/", ContentCreateMockViewSet.as_view(), name="create_mock_content"),
+        path(
+            "create_mock/",
+            ContentCreateMockViewSet.as_view(),
+            name="create_mock_content",
+        ),
     ]

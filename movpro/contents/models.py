@@ -72,9 +72,7 @@ class Content(StarterModel):
     director = models.ForeignKey(
         Person, on_delete=models.DO_NOTHING, related_name="director"
     )
-    actress = models.ManyToManyField(
-        Person, blank=True, related_name="actress"
-    )
+    actress = models.ManyToManyField(Person, blank=True, related_name="actress")
 
     genre = models.ManyToManyField(Genre, blank=True)
     content_rating = models.ForeignKey(ContentRating, on_delete=models.DO_NOTHING)

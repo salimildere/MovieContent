@@ -35,4 +35,3 @@ class ContentsAdmin(admin.ModelAdmin):
     list_editable = ("title",)
     list_filter = ("director",)
     list_per_page = 20
-
