@@ -8,13 +8,13 @@ from movpro.contents.views import (
 
 urlpatterns = [
     path("", ContentViewSet.as_view(), name="content"),
-    path("<int:pk>/", ContentDetailViewSet.as_view(), name="content_detail"),
+    path("<int:pk>/", ContentDetailViewSet.as_view(), name="content-detail"),
 ]
 if settings.IS_ACTIVE_FACTORY:
     urlpatterns += [
         path(
             "create_mock/",
             ContentCreateMockViewSet.as_view(),
-            name="create_mock_content",
+            name="create-mock-content",
         ),
     ]
