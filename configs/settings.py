@@ -157,6 +157,22 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 100
 }
 
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://redis:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient"
+        },
+        "KEY_PREFIX": "example"
+    }
+}
+
+CACHE_TTL = 60 * 15
+REDIS_HOST = os.environ.get('REDIS_HOST', '0.0.0.0')
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+
 try:
     from configs.settings_local import *
 except ImportError:
