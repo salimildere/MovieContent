@@ -2,6 +2,7 @@ from django.urls import reverse
 from rest_framework.test import APITestCase
 
 from movpro.contents.models import Content
+from movpro.contents.serializers import ContentSerializer
 from movpro.contents.tests.factories import ContentFactory
 
 
@@ -15,6 +16,10 @@ class ContentViewSetTestCase(APITestCase):
         self.assertEqual(len(response.data["results"]), 10)
         self.assertEqual(response.data["count"], 10)
         self.assertIsInstance(response.data, dict)
+
+    def test_response_keys(self):
+        response = self.client.get(reverse("contents:content"))
+        self.assertEqual(set(response.data["results"][0].keys()), set(ContentSerializer.Meta.fields))
 
 
 class ContentDetailViewSetTestCase(APITestCase):
