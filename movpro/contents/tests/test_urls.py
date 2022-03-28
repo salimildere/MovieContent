@@ -13,7 +13,7 @@ class TestContentURLAPIViews(TestCase):
 
         url_name_map = (
             ("/api/v1/content/", "contents:content"),
-            ("/api/v1/content/create_mock/", "contents:create_mock_content"),
+            ("/api/v1/content/create_mock/", "contents:create-mock-content"),
         )
 
         for url, name in url_name_map:
@@ -22,7 +22,7 @@ class TestContentURLAPIViews(TestCase):
 
     def test_content_urls_with_parameters(self):
         url_name_map = (
-            ("/api/v1/content/", "contents:content_detail", "pk"),
+            ("/api/v1/content/", "contents:content-detail", "pk"),
         )
         for url, name, param in url_name_map:
             kwargs = {param: "123"}
