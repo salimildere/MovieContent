@@ -152,6 +152,11 @@ REST_FRAMEWORK = {"DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSc
 
 IS_ACTIVE_FACTORY = env("IS_ACTIVE_FACTORY", default=True)
 
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 100
+}
+
 try:
     from configs.settings_local import *
 except ImportError:
