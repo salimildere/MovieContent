@@ -42,10 +42,15 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 LOCAL_APPS = [
+    "movpro.api.apps.ApiConfig",
+    "movpro.contents.apps.ContentsConfig",
 ]
 
 THIRD_PARTY_APPS = [
+    'rest_framework',
+    'rest_framework.authtoken',
     'drf_yasg',
+    'django_extensions',
 ]
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
@@ -141,3 +146,7 @@ ROOT_URLCONF = "configs.urls"
 
 FIELD='django.db.models.AutoField'
 REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }
+
+SHELL_PLUS_PRE_IMPORTS = (
+    ("movpro.contents.tests.factories", "*"),
+)
