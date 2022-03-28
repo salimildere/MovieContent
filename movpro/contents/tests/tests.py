@@ -1,3 +1,5 @@
+import time
+
 from django.urls import reverse
 from rest_framework.test import APITestCase
 
@@ -9,17 +11,29 @@ from movpro.contents.tests.factories import ContentFactory
 class ContentViewSetTestCase(APITestCase):
     def setUp(self):
         ContentFactory.create_batch(10)
+        self.url = reverse("contents:content")
 
     def test_list(self):
-        response = self.client.get(reverse("contents:content"))
+        response = self.client.get(self.url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.data["results"]), 10)
         self.assertEqual(response.data["count"], 10)
         self.assertIsInstance(response.data, dict)
 
     def test_response_keys(self):
-        response = self.client.get(reverse("contents:content"))
+        response = self.client.get(self.url)
         self.assertEqual(set(response.data["results"][0].keys()), set(ContentSerializer.Meta.fields))
+
+    def calculate_request_duration(self):
+        start_time = time.time()
+        _ = self.client.get(self.url)
+        duration = time.time() - start_time
+        return duration
+
+    def test_list_cache_page(self):
+        first_duration = self.calculate_request_duration()
+        last_duration = self.calculate_request_duration()
+        self.assertLess(last_duration, first_duration)
 
 
 class ContentDetailViewSetTestCase(APITestCase):
