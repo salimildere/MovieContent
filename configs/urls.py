@@ -9,7 +9,7 @@ schema_view = get_schema_view(
         title="Movie Content Service",
         default_version="v1",
         description="DRF for Movie Content Service",
-        # terms_of_service="https://www.google.com/policies/terms/",
+        terms_of_service="https://www.google.com/policies/terms/",
         contact=openapi.Contact(email="salimildere@gmail.com"),
         # license=openapi.License(name="BSD License"),
     ),
@@ -21,6 +21,7 @@ schema_view = get_schema_view(
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include("movpro.api.urls")),
+
     # OPEN API
     re_path(
         r"^swagger(?P<format>\.json|\.yaml)$",
