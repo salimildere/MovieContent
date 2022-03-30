@@ -14,7 +14,10 @@ class ContentViewSet(generics.ListAPIView):
     queryset = Content.objects.all()
     serializer_class = ContentSerializer
     filter_backends = (filters.DjangoFilterBackend,)
-    filterset_fields = ("id","title", )
+    filterset_fields = (
+        "id",
+        "title",
+    )
 
     @method_decorator(cache_page(60 * 60 * 2))
     def get(self, request, *args, **kwargs):
