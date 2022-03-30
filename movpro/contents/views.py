@@ -1,5 +1,6 @@
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
+from django_filters import rest_framework as filters
 from rest_framework import generics, status
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
@@ -12,6 +13,8 @@ from movpro.contents.tests.factories import ContentFactory
 class ContentViewSet(generics.ListAPIView):
     queryset = Content.objects.all()
     serializer_class = ContentSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_fields = ("id","title", )
 
     @method_decorator(cache_page(60 * 60 * 2))
     def get(self, request, *args, **kwargs):
