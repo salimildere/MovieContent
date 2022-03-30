@@ -19,7 +19,6 @@ DEBUG = env("DJANGO_DEBUG", default=True)
 
 ALLOWED_HOSTS = ["*"]
 
-
 # Application definition
 
 DJANGO_APPS = [
@@ -38,6 +37,7 @@ LOCAL_APPS = [
 THIRD_PARTY_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
+    "django_filters",
     "drf_yasg",
     "django_extensions",
 ]
@@ -140,6 +140,7 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
     "PAGE_SIZE": 20,
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
 # Cache
