@@ -82,7 +82,7 @@ DATABASES = {
         "NAME": env("DB_NAME", default="postgres"),
         "USER": env("DB_USER", default="postgres"),
         "PASSWORD": env("DB_PASSWORD", default="postgres"),
-        "HOST": env("DB_HOST", default="localhost"),
+        "HOST": env("DB_HOST", default="postgresContent"),
         "PORT": env("DB_PORT", default="5432"),
     }
 }
@@ -145,10 +145,12 @@ REST_FRAMEWORK = {
 
 # Cache
 
+REDIS_HOST = env("REDIS_HOST", default="redisContent")
+REDIS_PORT = env("REDIS_PORT", default="6379")
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://redis:6379/1",
+        "LOCATION": f"redis://{REDIS_HOST}:{REDIS_PORT}/1",
         "OPTIONS": {"CLIENT_CLASS": "django_redis.client.DefaultClient"},
         "KEY_PREFIX": "example",
     }
